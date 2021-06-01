@@ -3,7 +3,7 @@ import NavBar from "./NavBar"
 import Profile from "./Profile"
 
 function HomeView(props) {
-    const history = useHistory
+    const history = useHistory()
 
     if (!props.user) {
         history.push('/')

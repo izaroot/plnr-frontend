@@ -1,14 +1,17 @@
 // import './App.css';
-import { useState } from 'react';
+import { Component, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import LoginView from './Components/LoginView';
-import NavBar from './Components/NavBar'
+import HomeView from './Components/HomeView'
 
-function App() {
+class App extends Component {
 
-  const [user, setUser] = useState(null)
+  state = {
+    user: {}
+  }
   // Top Level Logic
 
+  render(){
   return (
     <Router>
       <Switch>
@@ -16,11 +19,14 @@ function App() {
           <LoginView setUser={setUser} />
         </Route>
         <Route exact path="/home">
-          <NavBar user={user} setUser={setUser} />
+          <HomeView user={user} setUser={setUser} />
         </Route>
       </Switch>
     </Router>
-  );
+  )
+
+  }
+
 }
 
 export default App;
