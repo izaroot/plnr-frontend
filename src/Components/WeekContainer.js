@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import DayContainer from './DayContainer'
 
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+
 export default class WeekContainer extends Component{
 
 

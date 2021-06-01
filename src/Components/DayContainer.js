@@ -12,7 +12,7 @@ export default class DayContainer extends Component{
         return(
             <div>
                 <h4>{days[start.getDay()]}</h4>
-                {this.props.userTask.map(userTask => <Task userTask={userTask} />)}
+                {/* {this.props.userTask.map(userTask => <Task userTask={userTask} />)} */}
                 DayContainer
             </div>
            
