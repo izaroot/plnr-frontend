@@ -1,7 +1,7 @@
 // import './App.css';
 import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Login from './Components/Login';
+import LoginView from './Components/LoginView';
 import NavBar from './Components/NavBar'
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Login setUser={setUser} />
+          <LoginView setUser={setUser} />
         </Route>
         <Route exact path="/home">
           <NavBar user={user} setUser={setUser} />
