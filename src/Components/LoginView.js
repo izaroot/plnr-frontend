@@ -19,7 +19,7 @@ class LoginView extends Component {
     return (
         <div>
             Log In and Register
-            <Form onSubmit={null} onChange={(e) => this.handleInput(e)}>
+            <Form onSubmit={() => this.props.handleLogin(this.state)} onChange={(e) => this.handleInput(e)}>
             <Form.Group>
                 <Form.Input
                 placeholder='Username'

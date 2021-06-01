@@ -1,20 +1,20 @@
+import React, { Component } from "react"
 import { useHistory } from "react-router"
 import NavBar from "./NavBar"
 import Profile from "./Profile"
 
-function HomeView(props) {
-    const history = useHistory()
+class HomeView extends Component {
 
-    if (!props.user) {
-        history.push('/')
-    }
 
-    return (
-        <div>
+    render() {
+        
+        return (
+            <div>
             <NavBar />
             <Profile />
-        </div>
-    )
+            </div>
+        )
+    }
     
 }
 
