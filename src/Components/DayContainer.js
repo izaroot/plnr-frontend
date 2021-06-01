@@ -1,14 +1,19 @@
 import React, { Component } from "react"
 import Task from './Task'
 
-export default class DayContainer extends Component{
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 
+export default class DayContainer extends Component{
+    
 
     render(){
+        const start = new Date(this.props.dayOf)
+        debugger
         return(
             <div>
-                {/* {this.props.user ? this.props.user.user_tasks.map(userTask => <Task userTask={userTask} />) : null}  */}
-                null
+                <h4>{days[start.getDay()]}</h4>
+                {this.props.userTask.map(userTask => <Task userTask={userTask} />)}
+                DayContainer
             </div>
            
         )

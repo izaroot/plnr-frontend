@@ -1,7 +1,5 @@
 import React, { Component } from "react"
 
-const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-
 export default class Task extends Component{
 
     render(){
