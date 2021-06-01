@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { withRouter } from 'react-router'
 import {Form} from 'semantic-ui-react'
 
 class LoginView extends Component {
@@ -19,7 +20,7 @@ class LoginView extends Component {
     return (
         <div>
             Log In and Register
-            <Form onSubmit={() => this.props.handleLogin(this.state)} onChange={(e) => this.handleInput(e)}>
+            <Form onSubmit={() => {this.props.handleLogin(this.state)}} onChange={(e) => this.handleInput(e)}>
             <Form.Group>
                 <Form.Input
                 placeholder='Username'

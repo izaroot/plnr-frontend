@@ -1,6 +1,6 @@
 // import './App.css';
-import { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom'
 import LoginView from './Components/LoginView';
 import HomeView from './Components/HomeView'
 
@@ -11,7 +11,8 @@ const API = "http://localhost:9292/"
 class App extends Component {
   
   state = {
-    user: null
+    user: {},
+    loggedIn: false
   }
   
   handleLogin = (state) => {
@@ -19,7 +20,8 @@ class App extends Component {
       .then(res => res.json())
       .then(result => {
         if(!result.error) {
-          this.setState({user: result})
+          this.setState({user: result, loggedIn: true})
+          this.props.history.push('/home')
         } else {
           alert(result.error)
         }
@@ -28,19 +30,18 @@ class App extends Component {
   // Top Level Logic
 
   render(){
+    console.log(this.props)
     return (
-      <Router>
         <Switch>
           <Route exact path="/">
-            <LoginView handleLogin={this.handleLogin} />
+             <LoginView handleLogin={this.handleLogin}/>
           </Route>
           <Route exact path="/home">
             <HomeView user={this.state.user} />
           </Route>
         </Switch>
-      </Router>
     )
   }
 }
 
-export default App;
+export default withRouter(App);
