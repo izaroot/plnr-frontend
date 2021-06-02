@@ -10,7 +10,7 @@ export default class WeekContainer extends Component{
         return(
             <div>
                 <h3>{this.props.weekOf}</h3>
-                {this.props.weeklyTasks.map(userTask => <DayContainer userTask={userTask} dayOf={userTask.start_time} />)}
+                {this.props.weeklyTasks.map(dayOfUserTasks => <DayContainer dayOfUserTasks={dayOfUserTasks[1]} dayOf={dayOfUserTasks[1][0].start_time} />)}
                 <br/>
                 ----------------------
             </div>

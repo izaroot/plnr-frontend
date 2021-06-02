@@ -30,7 +30,6 @@ class App extends Component {
   // Top Level Logic
 
   render(){
-    console.log(this.props)
     return (
         <Switch>
           <Route exact path="/">
