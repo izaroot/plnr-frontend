@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
 import {Menu} from 'semantic-ui-react'
 
 class NavBar extends Component {
@@ -6,26 +7,29 @@ class NavBar extends Component {
     render(){
         return (
             <Menu>
+                <Link to="/home">
                 <Menu.Item
-                name='editorials'
+                name='home'
                 // active={activeItem === 'editorials'}
                 // onClick={this.handleItemClick}
                 >
                 Home
                 </Menu.Item>
+                </Link>
 
+                <Link to="/newtask">
                 <Menu.Item
-                name='reviews'
+                name='newTask'
                 // active={activeItem === 'reviews'}
                 // onClick={this.handleItemClick}
                 >
-                Add Task
+                New Task
                 </Menu.Item>
-
+                </Link>
                 <Menu.Item
-                name='upcomingEvents'
+                name='logout'
                 // active={activeItem === 'upcomingEvents'}
-                // onClick={this.handleItemClick}
+                onClick={this.props.handleLogout}
                 >
                 Logout
                 </Menu.Item>
