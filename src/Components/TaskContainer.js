@@ -13,6 +13,7 @@ export default class TaskContainer extends Component{
 
 
     render(){
+        debugger
         const weeks = this.props.user ? this.props.user.tasks_by_week : {};
         return(
 
