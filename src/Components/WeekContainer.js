@@ -12,7 +12,6 @@ export default class WeekContainer extends Component{
                 <h3></h3>
                 {dayNames.map(dayName => <DayContainer dayName={dayName} dailyTasks={this.props.weeklyTasks.filter(task => task.start_time.split(',')[2]===dayName)} />)}
                 <br/>
-                ----------------------
             </div>
            
         )

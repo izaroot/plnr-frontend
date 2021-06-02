@@ -77,7 +77,7 @@ class App extends Component {
               <HomeView user={this.state.user} handleLogout={this.handleLogout} />
             </Route>
             <Route exact path="/newtask">
-                <NewTask />
+                <NewTask userId={this.state.user.id}/>
             </Route>
           </Switch>
         </div>
