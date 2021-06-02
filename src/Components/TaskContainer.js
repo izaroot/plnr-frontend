@@ -13,11 +13,13 @@ export default class TaskContainer extends Component{
 
 
     render(){
-        const weeks = this.props.user ? this.props.user.tasks_by_week : {};
+        let sortedTasks = [...this.props.user.user_tasks].sort((taskA, taskB) => parseInt(taskA.start_time.split(',')[7]) - parseInt(taskB.start_time.split(',')[7]))
+        let weekNums = [...new Set(sortedTasks.map(task => task.start_time.split(',')[3]))]
         return(
 
             <div>
-                {this.props.user ? Object.keys(weeks).map(weekKey => <WeekContainer weeklyTasks={weeks[weekKey]} weekOf={weekKey} />) : null} 
+                {/* {this.props.user ? tasks.map(task => <WeekContainer weeklyTasks={task} />) : null}  */}
+                {weekNums.map(weekNum => <WeekContainer weeklyTasks={sortedTasks.filter(task => task.start_time.split(',')[3]===weekNum)}/>)}
             </div>
            
         )
