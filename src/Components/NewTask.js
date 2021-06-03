@@ -1,5 +1,13 @@
 import React, { Component } from "react"
-import { Dropdown, Form, Item, Label, Segment, Select } from "semantic-ui-react"
+import { Dropdown, Form, Item, Label, List, Icon, Segment, Select } from "semantic-ui-react"
+
+const iconMap = {
+    "Self Care" : "heartbeat",
+    "Leisure" : "gamepad",
+    "Chore" : "home",
+    "Productivity" : "calculator"
+}
+
 
 export default class NewTask extends Component{
 
@@ -40,7 +48,7 @@ export default class NewTask extends Component{
         const postConfig = {
             method: "POST",
             headers: {
-                "Content-Type": "Application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(newUserTask)
         }
@@ -48,7 +56,7 @@ export default class NewTask extends Component{
         .then(resp => resp.json())
         .then(result => {
             console.log(result)
-            this.props.history.push('/home')
+            // this.props.history.push('/home')
         })
     }
 
@@ -62,9 +70,16 @@ export default class NewTask extends Component{
         return(
             <Segment.Group horizontal>
                 <Segment>
-                    <ul>
-                        {this.state.allTasks.map(task => <li onClick={() => this.handleTaskClick(task)} >{task.name}</li>)}
-                    </ul>
+                    <List selection verticalAlign='middle'>
+                        {this.state.allTasks.map(task => 
+                        <List.Item onClick={() => this.handleTaskClick(task)} >
+                            <Icon name={iconMap[task.category]} />
+                            <List.Content>
+                                <List.Header>{task.name}</List.Header>
+                            </List.Content>
+                        </List.Item>)}   
+                    </List>
+                    
                 </Segment>
                 {!this.state.selectedTaskObj ? null :
                     <Segment>

@@ -19,7 +19,7 @@ class Profile extends Component{
                     </Card.Content>
                     <Card.Content extra>
                         <a>
-                            <Icon name='user' />
+                            <Icon name='calendar check' />
                             # of tasks complete
                         </a>
                     </Card.Content>
