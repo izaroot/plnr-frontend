@@ -17,7 +17,8 @@ export default class NewTask extends Component{
         startTime: '',
         endTime: '',
         userId: null,
-        priority: 0
+        priority: 0,
+        disableSubmit: false
     }
 
     componentDidMount(){
@@ -56,7 +57,8 @@ export default class NewTask extends Component{
         .then(resp => resp.json())
         .then(result => {
             console.log(result)
-            // this.props.history.push('/home')
+            this.props.handleNewTask(result)
+            this.props.handlePageChange('/home')
         })
     }
 
@@ -77,7 +79,7 @@ export default class NewTask extends Component{
                             <List.Content>
                                 <List.Header>{task.name}</List.Header>
                             </List.Content>
-                        </List.Item>)}   
+                        </List.Item>)}
                     </List>
                     
                 </Segment>
@@ -116,7 +118,7 @@ export default class NewTask extends Component{
                                 onChange={this.handleChange}
                                 />
                                 <br/>
-                                <Form.Button content='Add Task' />
+                                <Form.Button disabled={this.state.disableSubmit} content='Add Task' />
                             </Form.Field>
                         </Form.Group>
                     </Form>

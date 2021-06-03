@@ -22,6 +22,7 @@ class App extends Component {
       .then(res => res.json())
       .then(result => {
         if(!result.error) {
+          result.user_tasks = result.user_tasks.map(task => ({...task, start_time: task.start_time.split(',') }))
           this.setState({user: result, loggedIn: true})
           this.props.history.push('/home')
         } else {
@@ -37,6 +38,20 @@ class App extends Component {
     })
     this.props.history.push('/')
   }
+
+  handleNewTask = (newTaskObj) => {
+    this.setState(previousState => ({
+      user: {
+        ...previousState.user,
+        user_tasks: [
+          ...previousState.user.user_tasks,
+          newTaskObj
+        ]
+      }
+    }))
+  }
+
+  handlePageChange = (newUrl) => {this.props.history.push(newUrl)}
 
   handleRegister = (state) => {
     const {name, profile_img, birthdate, username, password} = state
@@ -57,13 +72,12 @@ class App extends Component {
     .then(newUser => {
       if(!newUser.error) {
         this.setState({user: newUser, loggedIn: true})
-        this.props.history.push('/home')
+        this.handlePageChange('/home')
       } else {
         alert(newUser.error)
       }
     })
-  } 
-  // Top Level Logic
+  }
 
   render(){
     return (
@@ -77,7 +91,7 @@ class App extends Component {
               <HomeView user={this.state.user} handleLogout={this.handleLogout} />
             </Route>
             <Route exact path="/newtask">
-                <NewTask userId={this.state.user.id}/>
+                <NewTask handlePageChange={this.handlePageChange} handleNewTask={this.handleNewTask} userId={this.state.user.id}/>
             </Route>
           </Switch>
         </div>
