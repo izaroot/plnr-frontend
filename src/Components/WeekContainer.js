@@ -9,7 +9,7 @@ export default class WeekContainer extends Component{
 
         return(
             <div>
-                {dayNames.map(dayName => <Segment><DayContainer dailyTasks={this.props.weeklyTasks.filter(task => task.start_time[2] === dayName)} /></Segment>)}
+                {dayNames.map(dayName => <Segment><DayContainer handleUpdatedTask={this.props.handleUpdatedTask} handleDeleteTask={this.props.handleDeleteTask} dailyTasks={this.props.weeklyTasks.filter(task => task.start_time[2] === dayName)} /></Segment>)}
                 <br/>
             </div>
         )

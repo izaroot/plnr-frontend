@@ -9,7 +9,7 @@ export default class TaskContainer extends Component{
         
         return(
             <div>
-                {weekNums.map(weekNum => <WeekContainer weeklyTasks={sortedTasks.filter(task => task.start_time[3]===weekNum)}/>)}
+                {weekNums.map(weekNum => <WeekContainer handleUpdatedTask={this.props.handleUpdatedTask} handleDeleteTask={this.props.handleDeleteTask} weeklyTasks={sortedTasks.filter(task => task.start_time[3]===weekNum)}/>)}
             </div>
            
         )

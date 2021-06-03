@@ -8,7 +8,7 @@ export default class DayContainer extends Component{
         return(
             <Item.Group divided>
                 <h2>{this.props.dailyTasks[0].start_time[2]} {this.props.dailyTasks[0].start_time[4]} {this.props.dailyTasks[0].start_time[5]}</h2>
-                {this.props.dailyTasks.map(task => <Task userTask={task} />)}
+                {this.props.dailyTasks.map(task => <Task handleUpdatedTask={this.props.handleUpdatedTask} handleDeleteTask={this.props.handleDeleteTask} userTask={task} />)}
             </Item.Group>
            
         )

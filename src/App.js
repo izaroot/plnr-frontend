@@ -40,6 +40,7 @@ class App extends Component {
   }
 
   handleNewTask = (newTaskObj) => {
+    newTaskObj.start_time = newTaskObj.start_time.split(',')
     this.setState(previousState => ({
       user: {
         ...previousState.user,
@@ -47,6 +48,26 @@ class App extends Component {
           ...previousState.user.user_tasks,
           newTaskObj
         ]
+      }
+    }))
+  }
+
+  handleUpdatedTask = (updatedTask) => {
+    updatedTask.start_time = updatedTask.start_time.split(',')
+    this.setState(previousState => ({
+      user: {
+        ...previousState.user,
+        user_tasks: [...previousState.user.user_tasks.map(task => task.id === updatedTask.id ? updatedTask : task )]
+      }
+    }))
+  }
+
+  handleDeleteTask = (taskId) => {
+    const filteredTasks = this.state.user.user_tasks.filter(task => task.id !== taskId)
+    this.setState(previousState => ({
+      user: {
+        ...previousState.user,
+        user_tasks: [...filteredTasks]
       }
     }))
   }
@@ -88,7 +109,7 @@ class App extends Component {
               <LoginView handleRegister={this.handleRegister} handleLogin={this.handleLogin}/>
             </Route>
             <Route exact path="/home">
-              <HomeView user={this.state.user} handleLogout={this.handleLogout} />
+              <HomeView user={this.state.user} handleLogout={this.handleLogout} handleDeleteTask={this.handleDeleteTask} handleUpdatedTask={this.handleUpdatedTask} />
             </Route>
             <Route exact path="/newtask">
                 <NewTask handlePageChange={this.handlePageChange} handleNewTask={this.handleNewTask} userId={this.state.user.id}/>
