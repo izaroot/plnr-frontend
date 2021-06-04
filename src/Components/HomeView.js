@@ -8,15 +8,15 @@ class HomeView extends Component {
 
 
     render() {
-        if( Math.random() > .2){
+        if( Math.random() > .66){
             alert("Hi!!! We have been trying to reach you about your cars extended warranty!")
         }
         return (
             <div>
-                <Segment.Group horizontal>
-                    <Segment><Profile user={this.props.user}/></Segment>
+                {!!Object.keys(this.props.user).length ? <Segment.Group horizontal>
+                    <Segment><Profile profileMsg={this.props.profileMsg} user={this.props.user}/></Segment>
                     <Segment><TaskContainer handleUpdatedTask={this.props.handleUpdatedTask} handleDeleteTask={this.props.handleDeleteTask} user={this.props.user}/></Segment>
-                </Segment.Group>        
+                </Segment.Group> : null }      
             </div>
         )
     }

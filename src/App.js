@@ -14,9 +14,24 @@ class App extends Component {
   
   state = {
     user: {},
-    loggedIn: false
+    loggedIn: false,
+    mostPopTask: {},
+    profileMsg: ""
   }
   
+  componentDidMount(){
+    fetch('http://localhost:9292/mostpoptoday')
+    .then(resp => resp.json())
+    .then(taskObj => {
+      this.setState({
+        mostPopTask: taskObj
+      })
+    })
+    fetch('https://geek-jokes.sameerkumar.website/api').
+    then(resp => resp.json())
+    .then(resp => this.setState({profileMsg: resp}))
+  }
+
   handleLogin = (state) => {
     fetch(`${API}user=${state.username}&${state.password}`)
       .then(res => res.json())
@@ -103,13 +118,13 @@ class App extends Component {
   render(){
     return (
         <div>
-          {this.state.loggedIn ? <NavBar handleLogout={this.handleLogout} /> : null}
+          {this.state.loggedIn ? <NavBar mostPopTask={this.state.mostPopTask} handleLogout={this.handleLogout} /> : null}
           <Switch>
             <Route exact path="/">
-              <LoginView handleRegister={this.handleRegister} handleLogin={this.handleLogin}/>
+              <LoginView mostPopTask={this.state.mostPopTask} handleRegister={this.handleRegister} handleLogin={this.handleLogin}/>
             </Route>
             <Route exact path="/home">
-              <HomeView user={this.state.user} handleLogout={this.handleLogout} handleDeleteTask={this.handleDeleteTask} handleUpdatedTask={this.handleUpdatedTask} />
+              <HomeView profileMsg={this.state.profileMsg} user={this.state.user} handleLogout={this.handleLogout} handleDeleteTask={this.handleDeleteTask} handleUpdatedTask={this.handleUpdatedTask} />
             </Route>
             <Route exact path="/newtask">
                 <NewTask handlePageChange={this.handlePageChange} handleNewTask={this.handleNewTask} userId={this.state.user.id}/>

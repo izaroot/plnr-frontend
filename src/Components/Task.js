@@ -40,6 +40,12 @@ export default class Task extends Component{
         })
     }
 
+    cancelChanges = () => {
+        this.setState({
+            start_time:new Date(parseInt(`${this.props.userTask.start_time[7]}000`)).toJSON().slice(0, -5)
+        })
+    }
+
 
     saveTask = () => {
         fetch(`http://localhost:9292/usertasks/${this.props.userTask.id}`, {
@@ -82,7 +88,7 @@ export default class Task extends Component{
                                     </Form>
                                 </Modal.Content>
                                 <Modal.Actions>
-                                    <Button color='black' onClick={() => this.setState({open: false})}>
+                                    <Button color='black' onClick={() => {this.setState({open: false}); this.cancelChanges()}}>
                                     Cancel
                                     </Button>
                                     <Button

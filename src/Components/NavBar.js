@@ -33,6 +33,9 @@ class NavBar extends Component {
                 >
                 Logout
                 </Menu.Item>
+                <Menu.Item position='right'>
+                   Today's Most Popular Task is: <span>{this.props.mostPopTask.name}</span> 
+                </Menu.Item>
             </Menu>
         )
     }

@@ -83,6 +83,11 @@ class LoginView extends Component {
                 </Form>}
                 <Button onClick={this.loginDisplay}>{!this.state.registerDisplay ? "Create New User" : "Already have an account?"}</Button>
             </Segment>
+            <Segment>
+                <h3>The most popular task to do on {new Date().toLocaleString("default", { weekday: "long" })}s is: </h3>
+                <h1>{this.props.mostPopTask.name}</h1>
+                <h4>{this.props.mostPopTask.description}</h4>
+            </Segment>
         </Segment.Group>
     )
     }

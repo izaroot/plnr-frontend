@@ -4,8 +4,11 @@ import { Card, Image, Icon } from "semantic-ui-react"
 class Profile extends Component{
 
     render(){
+        let completedTasks = 0
+        this.props.user.user_tasks.forEach(element => {
+            element.is_complete ? completedTasks += 1 : completedTasks = completedTasks;
+        })
         return (
-            
                 <Card>
                     <Image src={this.props.user.profile_img} />
                     <Card.Content>
@@ -14,13 +17,13 @@ class Profile extends Component{
                             <span className='date'>Joined in 2015</span>
                         </Card.Meta> */}
                         <Card.Description>
-                            Matthew is a musician living in Nashville.
+                           {this.props.profileMsg}
                         </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
                         <a>
                             <Icon name='calendar check' />
-                            # of tasks complete
+                            {completedTasks} tasks completed
                         </a>
                     </Card.Content>
                 </Card>
