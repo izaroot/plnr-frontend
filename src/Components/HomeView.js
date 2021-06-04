@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { useHistory } from "react-router"
 import {Segment} from 'semantic-ui-react'
 import Profile from "./Profile"
 import TaskContainer from "./TaskContainer"
@@ -8,7 +7,7 @@ class HomeView extends Component {
 
 
     render() {
-        if( Math.random() > .66){
+        if( Math.random() > .77){
             alert("Hi!!! We have been trying to reach you about your cars extended warranty!")
         }
         return (

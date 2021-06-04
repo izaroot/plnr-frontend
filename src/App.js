@@ -1,7 +1,7 @@
-// import './App.css';
-import React, { Component } from 'react';
+// import './App.css'
+import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom'
-import LoginView from './Components/LoginView';
+import LoginView from './Components/LoginView'
 import HomeView from './Components/HomeView'
 import NewTask from './Components/NewTask'
 import NavBar from './Components/NavBar'

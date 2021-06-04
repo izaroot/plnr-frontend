@@ -1,11 +1,12 @@
 import React, { Component } from "react"
-import { Dropdown, Form, Item, Label, List, Icon, Segment, Select } from "semantic-ui-react"
+import { Form, Item, List, Icon, Segment } from "semantic-ui-react"
 
 const iconMap = {
     "Self Care" : "heartbeat",
     "Leisure" : "gamepad",
     "Chore" : "home",
-    "Productivity" : "calculator"
+    "Productivity" : "calculator",
+    "Exercise" : "universal access"
 }
 
 

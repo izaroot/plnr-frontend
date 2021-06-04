@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { withRouter } from 'react-router'
 import {Form, Segment, Button} from 'semantic-ui-react'
 
 class LoginView extends Component {

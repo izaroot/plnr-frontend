@@ -13,9 +13,6 @@ class Profile extends Component{
                     <Image src={this.props.user.profile_img} />
                     <Card.Content>
                         <Card.Header>{this.props.user.name}</Card.Header>
-                        {/* <Card.Meta>
-                            <span className='date'>Joined in 2015</span>
-                        </Card.Meta> */}
                         <Card.Description>
                            {this.props.profileMsg}
                         </Card.Description>

@@ -76,7 +76,7 @@ export default class Task extends Component{
                         <Modal onClose={() => this.setState({open: false})}
                                 onOpen={() => this.setState({open: true})}
                                 open={this.state.open}
-                                trigger={<Button onClick={null} floated='right'><Icon name='edit'/></Button>}>
+                                trigger={<Button onClick={null} floated='right'><Icon color='teal' name='edit'/></Button>}>
                                 <Modal.Header>{this.props.userTask.task.name}</Modal.Header>
                                 <Modal.Content>
                                     <Form>
@@ -100,8 +100,8 @@ export default class Task extends Component{
                                     />
                                 </Modal.Actions>                            
                         </Modal>
-                        <Button onClick={this.deleteTask} floated='right'><Icon name='trash alternate'/></Button>
-                        <Button onClick={this.ToggleComplete} floated='right'><Icon name={this.props.userTask.is_complete ? 'check square' : 'check square outline'}/></Button>
+                        <Button onClick={this.deleteTask} floated='right'><Icon color='red' name='trash alternate'/></Button>
+                        <Button onClick={this.ToggleComplete} floated='right'><Icon color={this.props.userTask.is_complete ? 'green' : ''} name={this.props.userTask.is_complete ? 'check square' : 'check square outline'}/></Button>
                     </Item.Extra>
                 </Item.Content>
             </Item>    

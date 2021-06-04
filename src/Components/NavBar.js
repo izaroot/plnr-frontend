@@ -10,8 +10,6 @@ class NavBar extends Component {
                 <Link to="/home">
                 <Menu.Item
                 name='home'
-                // active={activeItem === 'editorials'}
-                // onClick={this.handleItemClick}
                 >
                 Home
                 </Menu.Item>
@@ -20,15 +18,12 @@ class NavBar extends Component {
                 <Link to="/newtask">
                 <Menu.Item
                 name='newTask'
-                // active={activeItem === 'reviews'}
-                // onClick={this.handleItemClick}
                 >
                 New Task
                 </Menu.Item>
                 </Link>
                 <Menu.Item
                 name='logout'
-                // active={activeItem === 'upcomingEvents'}
                 onClick={this.props.handleLogout}
                 >
                 Logout

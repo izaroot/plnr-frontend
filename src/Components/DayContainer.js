@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Item, Segment } from "semantic-ui-react"
+import { Item } from "semantic-ui-react"
 import Task from './Task'
 
 export default class DayContainer extends Component{
